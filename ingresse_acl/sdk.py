@@ -306,6 +306,11 @@ class Role(BaseApp):
 
         Returns: resources.Role
         """
+        print(self.token)
+        print(AclClient.ROLES_UNIQUE)
+        print(role_term)
+        print(company_id)
+
         resp = self.client.get(token=self.token,
             path=AclClient.ROLES_UNIQUE,
             path_params={"role_term":role_term},
@@ -329,6 +334,9 @@ class Role(BaseApp):
             'description': description,
             'companyId': company_id
         }
+        print(role_body)
+        print(self.token)
+        print(AclClient.ROLES)
         resp = self.client.post(token=self.token, body=role_body,
             path=AclClient.ROLES)
         return RoleResource(resp)
