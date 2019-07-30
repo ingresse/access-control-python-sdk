@@ -140,6 +140,7 @@ class AclClient(object):
         url     = self.__get_url(path, path_params)
         headers = self.__get_header(token, 'get')
         response = requests.get(url, headers=headers, params=params)
+        print(response)
         self.__validate_response(response)
         return response.json().get('data', {})
 
@@ -156,7 +157,11 @@ class AclClient(object):
         """
         url     = self.__get_url(path, path_params)
         headers = self.__get_header(token, 'post')
+        print(url)
+        print(headers)
+        print(json.dumps(body))
         response = requests.post(url, headers=headers, data=json.dumps(body))
+        print(response)
         self.__validate_response(response)
         return response.json().get('data', {})
 
